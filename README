@@ -1,0 +1,27 @@
+南大计算机系2016级拔尖班2018寒假作业
+
+内容：socket编程，tcp，http等实现，简单的url加法器的实现，和博客的制作
+
+在这个项目中：
+	TCP：最简单的服务器与客户端的交互
+		adder：客户端给服务器两个数，然后得到它们的和
+		echo：基本的响应
+
+	HTTP：HTTP协议的实现，即能在本地网页中响应服务器
+		adder：localhost:port/add/num1/num2，在网页中显示出
+				num1 + num2 = sum
+		echo：localhost:port，在网页中显示出
+				Hello, World!
+		static_blog：依赖于python的flask，可以显示一个愚蠢的静态网页，有标题文字、照片和简单的表单等要素
+
+	blog：主要项目，利用了flask, mysql, jinjia2等技术，可以实现用户注册、登录，用户的相互关注，博客文章的发表等功能
+		app：主体代码
+		db_repository：数据库版本
+		flask：该项目所需的所有python库和配置文件
+		logs：运行记录
+		config.py：配置文件
+		db_create.py：初始化数据库
+		db_migrate.py：迁移数据库
+		run.py：通过指令 python run.py即可运行服务器
+		runp.py：禁止debug模式的运行
+		tests.py：主体代码models.py的单元测试
