@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Broccoli's Blog</title>
+    </head>
+    <body>
+        <div align="center" style="margin-top:80px">
+			<h1>Broccoli's Blog</h1>
+            <!-- <img src="../static/fc1.jpg" alt="fc1" height = "400px" /> -->
+            <img src=" {{url_for('static', filename='fc1.jpg') }} " alt="fc1" height = "400px" />
+        </div>
+        </style>
+		<div align="center" style="margin-top:30px">
+			Since I haven't learned HTML/CSS/JS, the blog is naive. So I only put a calculator on it.
+			<h2>Calculator</h2>
+            <form method="POST" name = "form1">
+                <input type="text" name = "left" placeholder = "left"/>+
+                <input type="text" name = "right" placeholder = "right"/>=
+                <input type="text" name = "result" placeholder = "result" readonly="readonly" value = "{{ RESULT }}"/>
+
+                <input type="submit" value = "submit"/>
+            </form>
+        </div>
+
+    </body>
+</html>
