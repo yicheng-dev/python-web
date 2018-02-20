@@ -167,7 +167,7 @@ def vote(id):
 	db.session.commit()
 	return redirect(url_for('index'))
 	 
-@app.route('/unvote/<ind:id>')
+@app.route('/unvote/<int:id>')
 @login_required
 def unvote(id):
 	post = Post.query.get(id)

@@ -15,10 +15,10 @@
 				<br><br>
 				{{ post.voter.count() }} persons like this blog.
 				<br>
-				{% if current_user.is_voting(post) %}
-				<p><a href="{{ url_for('vote'), id=post.id}}">Like it</a></p>
-				{% else %}
-				<p><a href="{{ url_for('unvote'), id=post.id }}">Dislike it</a></p>
+				{% if not current_user.is_voting(post) %}
+				<div><a href="{{ url_for('vote', id=post.id) }}">Like It</a></div>
+				{% elif current_user != post.author %}
+				<div><a href="{{ url_for('unvote', id=post.id) }}">Unlike it</a></div>
 				{% endif %}
 				<br>
 				{% if post.author.id == current_user.id %}
