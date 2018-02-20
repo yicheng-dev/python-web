@@ -14,7 +14,7 @@
 				Hello, World!
 		static_blog：依赖于python的flask，可以显示一个愚蠢的静态网页，有标题文字、照片和简单的表单等要素
 
-	blog：主要项目，利用了flask, mysql, jinjia2等技术，可以实现用户注册、登录，用户的相互关注，博客文章的发表等功能
+	blog：主要项目，利用了flask, sqlalchemy等技术，实现用户注册、登录，用户的相互关注，博客文章的发表等功能
 		app：主体代码
 		db_repository：数据库版本
 		flask：该项目所需的所有python库和配置文件
