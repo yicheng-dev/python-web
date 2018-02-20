@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
 {% block app_content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% if form %}
+	<div>
+		<img src="../static/universe.jpg" width="100%" height="600" />
+	</div>
+	{% if form %}
     {{ wtf.quick_form(form) }}
     <br>
     {% endif %}

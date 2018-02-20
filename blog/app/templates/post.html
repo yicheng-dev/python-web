@@ -12,6 +12,10 @@
                 said {{ moment(post.timestamp).fromNow() }}:
                 <br>
                 {{ post.body }}
+				<br>
+				{% if post.author.id == current_user.id %}
+				<a href="{{ url_for('delete', id=post.id) }}">Delete This Post</a>
+				{% endif %}
             </td>
         </tr>
     </table>

@@ -105,6 +105,21 @@ def edit_profile():
 		form.about_me.data = current_user.about_me
 	return render_template('edit_profile.html', title='Edit Profile', form=form)
 
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+	post = Post.query.get(id)
+	if post is None:
+		flash('Post not found.')
+		return redirect(url_for('index'))
+	if post.author.id != current_user.id:
+		flash('You cannot delete this post.')
+		return redirect(url_for('index'))
+	db.session.delete(post)
+	db.session.commit()
+	flash('Your post has been deleted.')
+	return redirect(url_for('index'))
+	 
 @app.route('/follow/<username>')
 @login_required
 def follow(username):
