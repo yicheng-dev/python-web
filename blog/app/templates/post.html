@@ -12,9 +12,17 @@
                 said {{ moment(post.timestamp).fromNow() }}:
                 <br>
                 {{ post.body }}
+				<br><br>
+				{{ post.voter.count() }} persons like this blog.
+				<br>
+				{% if current_user.is_voting(post) %}
+				<p><a href="{{ url_for('vote'), id=post.id}}">Like it</a></p>
+				{% else %}
+				<p><a href="{{ url_for('unvote'), id=post.id }}">Dislike it</a></p>
+				{% endif %}
 				<br>
 				{% if post.author.id == current_user.id %}
-				<a href="{{ url_for('delete', id=post.id) }}">Delete This Post</a>
+				<div><a href="{{ url_for('delete', id=post.id) }}">Delete This Post</a></div>
 				{% endif %}
             </td>
         </tr>

@@ -11,6 +11,12 @@ followers = db.Table(
 	db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
+voters = db.Table(
+	'voters',
+	db.Column('voter_id', db.Integer, db.ForeignKey('user.id')),
+	db.Column('voted_id', db.Integer, db.ForeignKey('post.id'))
+)
+
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True)
@@ -24,7 +30,9 @@ class User(UserMixin, db.Model):
 		primaryjoin=(followers.c.follower_id == id),
 		secondaryjoin=(followers.c.followed_id == id),
 		backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-	
+	voted = db.relationship(
+		'Post', secondary=voters, lazy='dynamic')
+
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
 	
@@ -54,6 +62,17 @@ class User(UserMixin, db.Model):
 		own = Post.query.filter_by(user_id=self.id)
 		return followed.union(own).order_by(Post.timestamp.desc())
 	
+	def vote(self, post):
+		if not self.is_voting(post):
+			self.voted.append(post)
+	
+	def unvote(self, post):
+		if self.is_voting(post):
+			self.voted.remove(post)
+	
+	def is_voting(self, post):
+		return self.voted.filter(voters.c.voted_id == post.id).count()>0
+	
 
 
 @login.user_loader
@@ -62,10 +81,11 @@ def load_user(id):
 
 
 class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	id = db.Column(db.Integer, primary_key=True)
+	body = db.Column(db.String(140))
+	timestamp = db.Column(db.DateTime, index=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	voter = db.relationship('User', secondary=voters, lazy='dynamic')
 
-    def __repr__(self):
-        return '<Post {}>'.format(self.body)
+	def __repr__(self):
+		return '<Post {}>'.format(self.body)

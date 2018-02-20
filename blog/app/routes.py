@@ -119,7 +119,7 @@ def delete(id):
 	db.session.commit()
 	flash('Your post has been deleted.')
 	return redirect(url_for('index'))
-	 
+
 @app.route('/follow/<username>')
 @login_required
 def follow(username):
@@ -150,4 +150,38 @@ def unfollow(username):
 	db.session.commit()
 	flash('You are not following {}!'.format(username))
 	return redirect(url_for('user',username=username))
+
+
+
+@app.route('/vote/<int:id>')
+@login_required
+def vote(id):
+	post = Post.query.get(id)
+	if post is None:
+		flash('Post not found.')
+		return redirect(url_for('index'))
+	if post.author.id == current_user.id:
+		flash('You cannot vote for your own post.')
+		return redirect(url_for('index'))
+	current_user.vote(post)
+	db.session.commit()
+	return redirect(url_for('index'))
+	 
+@app.route('/unvote/<ind:id>')
+@login_required
+def unvote(id):
+	post = Post.query.get(id)
+	if post is None:
+		flash('Post not found.')
+		return redirect(url_for('index'))
+	if post.author.id == current_user.id:
+		flash('You cannot unvote for your own post.')
+		return redirect(url_for('index'))
+	if not post.vote_num>0:
+		flash('No one has voted for this blog.')
+		return redirect(url_for('index'))
+	current_user.unvote(post)
+	db.session.commit()
+	return redirect(url_for('index'))
+
 
