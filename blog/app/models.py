@@ -17,6 +17,12 @@ voters = db.Table(
 	db.Column('voted_id', db.Integer, db.ForeignKey('post.id'))
 )
 
+comments = db.Table(
+	'comments',
+	db.Column('commenter_id', db.Integer, db.ForeignKey('user.id')),
+	db.Column('commented_id', db.Integer, db.ForeignKey('post.id'))
+)
+
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True)
@@ -32,6 +38,7 @@ class User(UserMixin, db.Model):
 		backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 	voted = db.relationship(
 		'Post', secondary=voters, lazy='dynamic')
+	commented = db.relationship('Comment', secondary=comments, lazy='dynamic')
 
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
@@ -86,6 +93,11 @@ class Post(db.Model):
 	timestamp = db.Column(db.DateTime, index=True)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	voter = db.relationship('User', secondary=voters, lazy='dynamic')
+	commenter = db.relationship('Comment', secondary=comments, lazy='dynamic')
+
+	def _comments(self):
+		comment = Comment.query.all()
+		return followed.order_by(Post.timestamp.desc())
 
 	def __repr__(self):
 		return '<Post {}>'.format(self.body)
@@ -97,3 +109,15 @@ class Message(db.Model):
 
 	def __repr__(self):
 		return '<Message {}>'.format(self.body)
+
+class Comment(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	body = db.Column(db.Text)
+	body_html = db.Column(db.Text)
+	timestamp = db.Column(db.DateTime, index=True)
+	disabled = db.Column(db.Boolean)
+
+	def __repr__(self):
+		return '<Comment {}>'.format(self.body)
+
+
