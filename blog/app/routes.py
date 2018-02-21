@@ -177,7 +177,7 @@ def unvote(id):
 	if post.author.id == current_user.id:
 		flash('You cannot unvote for your own post.')
 		return redirect(url_for('index'))
-	if not post.vote_num>0:
+	if not post.voter.count()>0:
 		flash('No one has voted for this blog.')
 		return redirect(url_for('index'))
 	current_user.unvote(post)
