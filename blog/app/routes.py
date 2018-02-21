@@ -2,8 +2,8 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
-from app.models import User, Post
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, MessageForm
+from app.models import User, Post, Message
 from datetime import datetime
 
 
@@ -184,4 +184,14 @@ def unvote(id):
 	db.session.commit()
 	return redirect(url_for('index'))
 
-
+@app.route('/leave_message', methods=['GET', 'POST'])
+@login_required
+def leave_message():
+	form = MessageForm()
+	if form.validate_on_submit():
+		message = Message(body=form.message.data, user_id = current_user.id)
+		db.session.add(message)
+		db.session.commit()
+		flash('You successfully leave a message to us!')
+		return redirect(url_for('leave_message'))
+	return render_template('leave_message.html', title='Leave a Message',form=form)

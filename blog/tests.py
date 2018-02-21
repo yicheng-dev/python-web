@@ -49,6 +49,38 @@ class UserModelCase(unittest.TestCase):
 		self.assertEqual(u1.followed.count(), 0)
 		self.assertEqual(u2.followers.count(), 0)
 
+	def test_vote(self):
+	# create three users
+		u1 = User(username='john', email='john@example.com')
+		u2 = User(username='susan', email='susan@example.com')
+		u3 = User(username='mary', email='mary@example.com')
+		db.session.add_all([u1, u2, u3])
+
+	# create three posts
+		now = datetime.utcnow()
+		p1 = Post(body="post from john 1", author=u1,
+				timestamp=now + timedelta(seconds=1))
+		p2 = Post(body="post from john 2", author=u1,
+				timestamp=now + timedelta(seconds=2))
+		p3 = Post(body="post from susan", author=u2,
+				timestamp=now + timedelta(seconds=3))
+		db.session.add_all([p1, p2, p3])
+		db.session.commit()
+	
+	# setup the voters
+		u1.vote(p3)
+		u2.vote(p1)
+		u2.vote(p2)
+		u3.vote(p1)
+		db.session.commit()
+
+	# check the voted posts of each user
+		self.assertEqual(p1.voter.count(), 2)
+		self.assertEqual(u2.voted.count(), 2)
+		u3.unvote(p1)
+		self.assertEqual(p1.voter.count(), 1)
+
+
 	def test_follow_posts(self):
     # create four users
 		u1 = User(username='john', email='john@example.com')
