@@ -44,3 +44,4 @@ NameError: global name 'MessageForm' is not defined
 2018-02-21 14:17:36,746 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-21 14:19:35,910 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-21 14:21:07,167 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-21 14:49:50,375 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
