@@ -17,7 +17,7 @@
 				<br>
 				{% if not current_user.is_voting(post) %}
 				<div><a href="{{ url_for('vote', id=post.id) }}">Like It</a></div>
-				{% elif current_user != post.author %}
+				{% else %}
 				<div><a href="{{ url_for('unvote', id=post.id) }}">Dislike it</a></div>
 				{% endif %}
 				<br>
