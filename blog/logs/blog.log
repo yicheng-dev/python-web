@@ -68,3 +68,5 @@ Traceback (most recent call last):
 AttributeError: 'Post' object has no attribute 'vote_num'
 2018-02-21 11:38:45,762 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-21 11:45:04,437 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-21 11:49:19,015 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-21 11:57:43,457 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
