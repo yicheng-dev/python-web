@@ -25,6 +25,7 @@ class User(UserMixin, db.Model):
 	posts = db.relationship('Post', backref='author', lazy='dynamic')
 	about_me = db.Column(db.String(140))
 	last_seen = db.Column(db.DateTime)
+	avatar = db.Column(db.String(128), default = None)
 	followed = db.relationship(
 		'User', secondary=followers,
 		primaryjoin=(followers.c.follower_id == id),
@@ -43,9 +44,8 @@ class User(UserMixin, db.Model):
 	def check_password(self, password):
 		return check_password_hash(self.password_hash, password)
 	
-	def avatar(self, size):
-		digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-		return 'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'.format(digest=digest, size=size)
+	def gavatar(self, size): 
+		return 'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'.format(digest=md5(self.email.lower().encode('utf-8')).hexdigest(), size = size)
 	def follow(self, user):
 		if not self.is_following(user):
 			self.followed.append(user)

@@ -1,11 +1,18 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, send_from_directory
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, MessageForm, CommentForm
 from app.models import User, Post, Message, Comment
 from datetime import datetime
+from werkzeug import secure_filename
+import os
 
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.',1)[1] in app.config['ALLOWED_EXTENSIONS']
+
+def allowed_avatar(filename):
+	return '.' in filename and filename.rsplit('.',1)[1] in app.config['ALLOWED_AVATAR_EXTENSIONS']
 
 @app.before_request
 def before_request():
@@ -114,9 +121,17 @@ def edit_profile():
 	if form.validate_on_submit():
 		current_user.username = form.username.data
 		current_user.about_me = form.about_me.data
+		avatar = request.files['avatar']
+		if avatar:
+			if not allowed_avatar(avatar.filename):
+				flash('Invalid file type! Only .jpg, .jpeg, .png, .gif are allowed.')
+				return redirect(url_for('edit_profile'))
+		filename = secure_filename(avatar.filename)
+		avatar.save('{}/{}/{}_{}'.format(os.path.join(os.path.dirname(os.path.realpath(__file__))), app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename))
+		current_user.avatar = '{}/{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename)
 		db.session.commit()
 		flash('Your changes have been saved.')
-		return redirect(url_for('edit_profile'))
+		return redirect(url_for('user', username = current_user.username))
 	elif request.method == 'GET':
 		form.username.data = current_user.username
 		form.about_me.data = current_user.about_me
@@ -208,3 +223,28 @@ def leave_message():
 		flash('You successfully leave a message to us!')
 		return redirect(url_for('leave_message'))
 	return render_template('leave_message.html', title='Leave a Message',form=form)
+
+@app.route('/upload_file', methods=['GET', 'POST'])
+@login_required
+def upload_file():
+	if request.method == 'POST':
+		file = request.files['file']
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(os.path.dirname(os.path.realpath(__file__)), app.config['UPLOAD_FOLDER'], filename))
+			return redirect(url_for('uploaded_file', filename=filename))
+		return '<p>The file''s type is invalid.</p>'
+	return '''
+	<!DOCTYPE html>
+	<title>Change new icon</title>
+	<h1>Upload new</h1>
+	<form action = "" method = "post" enctype=multipart/form-data>
+		<input type = "file" name = file>
+		<input type = "submit" value = Upload>
+	</form>
+	'''
+
+@app.route('/uploaded_file/<filename>')
+@login_required
+def uploaded_file(filename):
+	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)

@@ -1,10 +1,14 @@
     <table class="table table-hover">
         <tr>
-            <td width="70px">
+			<td width="70px">
                 <a href="{{ url_for('user', username=post.author.username) }}">
-                    <img src="{{ post.author.avatar(70) }}" />
+				{% if not post.author.avatar %}
+                <img class='img-rounded profile-thumbnail' src="{{ post.author.gavatar(70) }}" />
+				{% else %}
+				<img class='img-rounded profile-thumbnail' width="70" height="70" src="{{ post.author.avatar }}" />
+				{% endif %}
                 </a>
-            </td>
+			</td>
             <td>
                 <a href="{{ url_for('user', username=post.author.username) }}">
                     {{ post.author.username }}

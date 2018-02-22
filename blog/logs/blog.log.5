@@ -1,4 +1,4 @@
-2018-02-22 00:32:15,468 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-02-22 01:15:11,668 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -6,17 +6,52 @@ Traceback (most recent call last):
     rv = self.handle_user_exception(e)
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 109, in post
-    return render_template('_post.html', posts=[post], form=form, comments=comments,pagination=pagination)
-UnboundLocalError: local variable 'comments' referenced before assignment
-2018-02-22 00:35:15,296 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:35:26,275 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1610, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1831, in preprocess_request
+    rv = func()
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 12, in before_request
+    if current_user.is_authenticated:
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 87, in load_user
+    return User.query.get(int(id))
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1272, in _configure_all
+    configure_mappers()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 3029, in configure_mappers
+    mapper._post_configure_properties()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1828, in _post_configure_properties
+    prop.init()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/interfaces.py", line 184, in init
+    self.do_init()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_join_conditions()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1731, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1998, in __init__
+    self._determine_joins()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 2094, in _determine_joins
+    "expressions." % (self.prop, self.secondary))
+NoForeignKeysError: Could not determine join condition between parent/child tables on relationship User.comments - there are no foreign keys linking these tables via secondary table 'comments'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.
+2018-02-22 01:15:25,139 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 01:16:13,808 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 01:16:19,169 ERROR: Exception on / [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -24,109 +59,46 @@ Traceback (most recent call last):
     rv = self.handle_user_exception(e)
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 109, in post
-    return render_template('_post.html', posts=[post], form=form, comments=comment,pagination=pagination)
-UnboundLocalError: local variable 'comment' referenced before assignment
-2018-02-22 00:41:41,271 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:42:00,342 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 104, in post
-    comments = post.comments()
-TypeError: 'AppenderBaseQuery' object is not callable
-2018-02-22 00:50:00,867 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:50:06,187 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
-    comments = post.comments().paginate(page, app.config['COMMENTS_PER_PAGE'], False)
-TypeError: 'AppenderBaseQuery' object is not callable
-2018-02-22 00:53:27,355 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:53:30,144 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
-    comments = post.comments.query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
-AttributeError: 'AppenderBaseQuery' object has no attribute 'query'
-2018-02-22 01:00:13,528 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 01:00:15,734 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
-    comments = post.comments.query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
-AttributeError: 'function' object has no attribute 'query'
-2018-02-22 01:01:26,610 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 01:01:28,635 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
-    comments = post.comments().query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
-  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 93, in comments
-    comment = Comment.query.filter_by(post=self).all()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 1585, in filter_by
-    for key, value in kwargs.items()]
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 383, in _entity_descriptor
-    (description, key)
-InvalidRequestError: Entity '<class 'app.models.Comment'>' has no property 'post'
-2018-02-22 01:02:24,686 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1610, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1831, in preprocess_request
+    rv = func()
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 12, in before_request
+    if current_user.is_authenticated:
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 87, in load_user
+    return User.query.get(int(id))
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1272, in _configure_all
+    configure_mappers()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 3029, in configure_mappers
+    mapper._post_configure_properties()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1828, in _post_configure_properties
+    prop.init()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/interfaces.py", line 184, in init
+    self.do_init()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_join_conditions()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1731, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1998, in __init__
+    self._determine_joins()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 2094, in _determine_joins
+    "expressions." % (self.prop, self.secondary))
+NoForeignKeysError: Could not determine join condition between parent/child tables on relationship User.comments - there are no foreign keys linking these tables via secondary table 'comments'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.

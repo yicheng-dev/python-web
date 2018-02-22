@@ -3,7 +3,13 @@
 {% block app_content %}
     <table class="table table-hover">
         <tr>
-            <td width="256px"><img src="{{ user.avatar(256) }}"></td>
+			<td width="250px">
+			{% if not current_user.avatar %}
+            <img class="img-rounded profile-thumbnail" src="{{ user.gavatar(250) }}">
+			{% else %}
+			<img class="img-rounded profile-thumbnail" width="250" height="250" src="{{ user.avatar }}">
+			{% endif %}
+			</td>
             <td>
                 <h1>User: {{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}

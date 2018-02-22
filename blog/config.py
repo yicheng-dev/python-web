@@ -15,3 +15,7 @@ class Config(object):
 	ADMINS = ['your-email@example.com']
 	POSTS_PER_PAGE = 10
 	COMMENTS_PER_PAGE = 5
+	UPLOAD_FOLDER = 'static/upload/file'
+	UPLOAD_AVATAR_FOLDER = 'static/upload/avatar'
+	ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+	ALLOWED_AVATAR_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])

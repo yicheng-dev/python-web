@@ -1,100 +1,6 @@
-2018-02-22 01:16:22,641 ERROR: Exception on / [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1610, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1831, in preprocess_request
-    rv = func()
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 12, in before_request
-    if current_user.is_authenticated:
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 87, in load_user
-    return User.query.get(int(id))
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
-    mapper._configure_all()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1272, in _configure_all
-    configure_mappers()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 3026, in configure_mappers
-    raise e
-InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|User|user'. Original exception was: Could not determine join condition between parent/child tables on relationship User.comments - there are no foreign keys linking these tables via secondary table 'comments'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.
-2018-02-22 01:19:18,734 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 01:19:24,522 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 01:19:29,994 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 01:19:32,557 ERROR: Exception on / [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1610, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1831, in preprocess_request
-    rv = func()
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 12, in before_request
-    if current_user.is_authenticated:
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 87, in load_user
-    return User.query.get(int(id))
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
-    mapper._configure_all()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1272, in _configure_all
-    configure_mappers()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 3029, in configure_mappers
-    mapper._post_configure_properties()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/mapper.py", line 1828, in _post_configure_properties
-    prop.init()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/interfaces.py", line 184, in init
-    self.do_init()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
-    self._setup_join_conditions()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1731, in _setup_join_conditions
-    can_be_synced_fn=self._columns_are_mapped
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 1998, in __init__
-    self._determine_joins()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/relationships.py", line 2094, in _determine_joins
-    "expressions." % (self.prop, self.secondary))
-NoForeignKeysError: Could not determine join condition between parent/child tables on relationship User.commented - there are no foreign keys linking these tables via secondary table 'comments'.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify 'primaryjoin' and 'secondaryjoin' expressions.
-2018-02-22 12:40:02,730 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 12:40:14,791 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 12:40:21,242 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 12:41:14,101 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-02-22 12:57:09,918 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 12:59:40,492 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 12:59:44,217 ERROR: Exception on /post/3 [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -108,7 +14,125 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
-    comments = post._comments().paginate(page, app.config['COMMENTS_PER_PAGE'], false)
-NameError: global name 'false' is not defined
-2018-02-22 12:47:55,719 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 99, in post
+    comment = Comment(body = form.body.data, post=post, author=current_user)
+AttributeError: 'CommentForm' object has no attribute 'body'
+2018-02-22 13:00:45,893 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:18:35,026 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:28:49,295 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:29:46,119 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 223, in upload_file
+    filename = secure_filename(file.filename)
+NameError: global name 'secure_filename' is not defined
+2018-02-22 13:31:54,568 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:32:41,415 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 225, in upload_file
+    file.save(os.path.join(UPLOAD_FOLDER, filename))
+NameError: global name 'os' is not defined
+2018-02-22 13:33:01,746 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:33:29,316 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 226, in upload_file
+    file.save(os.path.join(UPLOAD_FOLDER, filename))
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: 'upload/Screenshot_from_2017-09-21_18-51-47.png'
+2018-02-22 13:48:59,952 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:49:29,219 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 223, in upload_file
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/upload/air1.jpg'
+2018-02-22 13:50:42,129 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:50:57,149 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 223, in upload_file
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/app/upload/air1.jpg'
+2018-02-22 13:51:36,248 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 13:51:52,601 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 223, in upload_file
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/../upload/air1.jpg'
+2018-02-22 14:01:48,384 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
