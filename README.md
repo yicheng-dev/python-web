@@ -15,14 +15,14 @@
 
 <h1>编译说明</h1>
 
-<li><code>TCP</code>首先<code>$ python server.py</code>，其次<code>$ python client.py</code>，观察响应情况<li>
+<li><code>TCP</code>首先<code>$ python server.py</code>，其次<code>$ python client.py</code>，观察响应情况</li>
 <li><code>HTTPServer</code>通过<code>$ python webServer.py</code>即可启动服务器。</li>
 <li><code>blog</code>需要配置环境，利用<code>pip</code>安装<code>/app</code>中相关的各个库，然后通过<code>$ python run.py</code>可在debug模式下运行，通过<code>$ python runp.py</code>可在非debug模式下运行，建议后者。</li>
 
 <h1>效果展示</h1>
 
 <p>HTTPServer的加法结果如下：</p>
-<p><img src="show/add.png" alt="" title="" /></p>
+<p><img src="show/adder.png" alt="" title="" /></p>
 
 <p>博客的主页如下：</p>
 <p><img src="show/index1.png" alt="" title="" /></p>
