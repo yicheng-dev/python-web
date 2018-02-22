@@ -90,22 +90,22 @@ def user(username):
 	prev_url = url_for('user', username=user.username, page=posts.prev_num) if posts.has_prev else None
 	return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
-@app.route('/post/<int:id>')
+@app.route('/post/<int:id>', methods=['GET', 'POST'])
 @login_required
 def post(id):
 	post = Post.query.get_or_404(id)
 	form = CommentForm()
 	if form.validate_on_submit():
-		comment = Comment(body = form.body.data, post=post, author=current_user)
+		comment = Comment(body = form.message.data, post=post, author=current_user)
 		db.session.add(comment)
 		db.session.commit()
 		flash('Your comment has been published.')
-		return redirect(url_for('post',id=post.id,page=-1))
+		return redirect(url_for('post',id=post.id))
 	page = request.args.get('page', 1, type=int)
-	comments = post._comments().paginate(page, app.config['COMMENTS_PER_PAGE'], false)
+	comments = post._comments().paginate(page, app.config['COMMENTS_PER_PAGE'], False)
 	next_url = url_for('post', id=id, page=comments.next_num) if comments.has_next else None
 	prev_url = url_for('post', id=id, page=comments.prev_num) if comments.has_prev else None
-	return render_template('_post.html', posts=[post], form=form, comments=comments, next_url=next_url, prev_url=prev_url)
+	return render_template('_post.html', post=post, form=form, comments=comments.items, next_url=next_url, prev_url=prev_url)
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
