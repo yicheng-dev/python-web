@@ -106,3 +106,5 @@ BuildError: Could not build url for endpoint 'user'. Did you forget to specify v
 2018-02-22 16:37:24,986 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-22 16:46:17,977 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-22 16:52:56,582 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 17:20:57,287 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 17:22:59,140 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]

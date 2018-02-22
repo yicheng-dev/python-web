@@ -128,7 +128,7 @@ def edit_profile():
 				return redirect(url_for('edit_profile'))
 		filename = secure_filename(avatar.filename)
 		avatar.save('{}/{}/{}_{}'.format(os.path.join(os.path.dirname(os.path.realpath(__file__))), app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename))
-		current_user.avatar = '{}/{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename)
+		current_user.avatar = '../{}/{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename)
 		db.session.commit()
 		flash('Your changes have been saved.')
 		return redirect(url_for('user', username = current_user.username))
