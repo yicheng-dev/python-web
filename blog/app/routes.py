@@ -128,7 +128,7 @@ def edit_profile():
 				return redirect(url_for('edit_profile'))
 		filename = secure_filename(avatar.filename)
 		avatar.save('{}/{}/{}_{}'.format(os.path.join(os.path.dirname(os.path.realpath(__file__))), app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename))
-		current_user.avatar = '../{}/{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename)
+		current_user.avatar = '{}/{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename)
 		db.session.commit()
 		flash('Your changes have been saved.')
 		return redirect(url_for('user', username = current_user.username))
@@ -195,7 +195,7 @@ def vote(id):
 	current_user.vote(post)
 	db.session.commit()
 	flash('You have successfully voted for this blog!')
-	return redirect(url_for('index'))
+	return redirect(url_for('post', id = id))
 	 
 @app.route('/unvote/<int:id>')
 @login_required
@@ -206,11 +206,11 @@ def unvote(id):
 		return redirect(url_for('index'))
 	if not post.voter.count()>0:
 		flash('No one has voted for this blog.')
-		return redirect(url_for('index'))
+		return redirect(url_for('post', id = id))
 	current_user.unvote(post)
 	db.session.commit()
 	flash('You have successfully unvoted for this blog!')
-	return redirect(url_for('index'))
+	return redirect(url_for('post', id = id))
 
 @app.route('/leave_message', methods=['GET', 'POST'])
 @login_required

@@ -1,59 +1,4 @@
-2018-02-21 13:17:44,717 ERROR: Exception on /leave_message/hych [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 191, in leave_message
-    form = MessageForm()
-NameError: global name 'MessageForm' is not defined
-2018-02-21 13:18:25,762 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:19:07,325 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:19:36,452 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:19:37,413 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:20:51,705 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:20:52,879 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:24:35,862 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:24:36,449 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:26:30,968 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:30:53,344 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:35:41,018 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:35:42,086 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:38:33,134 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:38:34,627 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:39:17,855 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:39:18,793 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:39:48,021 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:39:49,988 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:39:50,855 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:41:52,822 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:41:53,869 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:42:20,597 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:42:21,537 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:53:08,863 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:53:33,176 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 13:54:26,535 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 14:17:36,746 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 14:19:35,910 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 14:21:07,167 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 14:49:50,375 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 20:29:48,880 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 22:34:19,736 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 22:58:33,542 INFO: Blog startup [in app/__init__.py:44]
-2018-02-21 23:05:45,494 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 23:08:15,580 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-21 23:10:23,626 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:10:48,236 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:10:54,152 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:11:17,751 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-02-22 00:32:15,468 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -70,12 +15,8 @@ Traceback (most recent call last):
   File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 109, in post
     return render_template('_post.html', posts=[post], form=form, comments=comments,pagination=pagination)
 UnboundLocalError: local variable 'comments' referenced before assignment
-2018-02-22 00:16:59,440 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:20:40,557 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:22:42,456 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:26:13,398 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:27:43,710 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:28:40,982 ERROR: Exception on /post/2 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-02-22 00:35:15,296 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 00:35:26,275 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -90,10 +31,10 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
   File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 109, in post
-    return render_template('_post.html', posts=[post], form=form, comments=comments,pagination=pagination)
-UnboundLocalError: local variable 'comments' referenced before assignment
-2018-02-22 00:30:52,817 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 00:31:06,551 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+    return render_template('_post.html', posts=[post], form=form, comments=comment,pagination=pagination)
+UnboundLocalError: local variable 'comment' referenced before assignment
+2018-02-22 00:41:41,271 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 00:42:00,342 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -107,7 +48,85 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 109, in post
-    return render_template('_post.html', posts=[post], form=form, comments=comments,pagination=pagination)
-UnboundLocalError: local variable 'comments' referenced before assignment
-2018-02-22 00:32:07,408 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 104, in post
+    comments = post.comments()
+TypeError: 'AppenderBaseQuery' object is not callable
+2018-02-22 00:50:00,867 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 00:50:06,187 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
+    comments = post.comments().paginate(page, app.config['COMMENTS_PER_PAGE'], False)
+TypeError: 'AppenderBaseQuery' object is not callable
+2018-02-22 00:53:27,355 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 00:53:30,144 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
+    comments = post.comments.query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
+AttributeError: 'AppenderBaseQuery' object has no attribute 'query'
+2018-02-22 01:00:13,528 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 01:00:15,734 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
+    comments = post.comments.query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
+AttributeError: 'function' object has no attribute 'query'
+2018-02-22 01:01:26,610 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 01:01:28,635 ERROR: Exception on /post/3 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 105, in post
+    comments = post.comments().query.order_by(Comment.timestamp.desc()).paginate(page, app.config['COMMENTS_PER_PAGE'], false)
+  File "/home/broccoli/161220049_web_programming/blog/app/models.py", line 93, in comments
+    comment = Comment.query.filter_by(post=self).all()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 1585, in filter_by
+    for key, value in kwargs.items()]
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/base.py", line 383, in _entity_descriptor
+    (description, key)
+InvalidRequestError: Entity '<class 'app.models.Comment'>' has no property 'post'
+2018-02-22 01:02:24,686 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]

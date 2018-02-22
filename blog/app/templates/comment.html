@@ -2,7 +2,11 @@
         <tr>
             <td width="70px">
                 <a href="{{ url_for('user', username=comment.author.username) }}">
-                    <img src="{{ comment.author.avatar(70) }}" />
+					{% if comment.author.avatar %}
+					<img width="70" height="70" src="../{{ comment.author.avatar }}" />
+					{% else %}
+                    <img src="{{ comment.author.gavatar(70) }}" />
+					{% endif %}
                 </a>
             </td>
             <td>

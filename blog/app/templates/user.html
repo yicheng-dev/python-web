@@ -7,7 +7,7 @@
 			{% if not current_user.avatar %}
             <img class="img-rounded profile-thumbnail" src="{{ user.gavatar(250) }}">
 			{% else %}
-			<img class="img-rounded profile-thumbnail" width="250" height="250" src="{{ user.avatar }}">
+			<img class="img-rounded profile-thumbnail" width="250" height="250" src="../{{ user.avatar }}">
 			{% endif %}
 			</td>
             <td>

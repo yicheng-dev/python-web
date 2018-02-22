@@ -5,7 +5,7 @@
 				{% if not post.author.avatar %}
                 <img class='img-rounded profile-thumbnail' src="{{ post.author.gavatar(70) }}" />
 				{% else %}
-				<img class='img-rounded profile-thumbnail' width="70" height="70" src="{{ post.author.avatar }}" />
+				<img class='img-rounded profile-thumbnail' width="70" height="70" src="../{{ post.author.avatar }}" />
 				{% endif %}
                 </a>
 			</td>

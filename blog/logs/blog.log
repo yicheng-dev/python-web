@@ -1,4 +1,4 @@
-2018-02-22 14:23:38,221 ERROR: Exception on /upload_file [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-02-22 17:45:39,487 ERROR: Exception on /post/22 [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,99 +12,37 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 223, in upload_file
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
-    dst = open(dst, 'wb')
-IOError: [Errno 2] No such file or directory: 'upload/air1.jpg'
-2018-02-22 14:24:35,728 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:11:08,917 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:11:14,017 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:11:42,027 ERROR: Exception on /edit_profile [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 115, in post
+    return render_template('_post.html', post=post, form=form, comments=comments.items, next_url=next_url, prev_url=prev_url)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/Jinja2-2.10-py2.7.egg/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/local/lib/python2.7/dist-packages/Jinja2-2.10-py2.7.egg/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 132, in edit_profile
-    avatar.save('{}{}_{}'.format(UPLOAD_AVATAR_FOLDER, current_user.username, filename))
-NameError: global name 'UPLOAD_AVATAR_FOLDER' is not defined
-2018-02-22 15:12:20,625 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:12:39,327 ERROR: Exception on /edit_profile [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 132, in edit_profile
-    avatar.save('{}{}_{}'.format(app.config['UPLOAD_AVATAR_FOLDER'], current_user.username, filename))
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/datastructures.py", line 2725, in save
-    dst = open(dst, 'wb')
-IOError: [Errno 2] No such file or directory: 'static/upload/avatarhych_air1.jpg'
-2018-02-22 15:18:44,316 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:19:14,624 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:19:29,513 ERROR: Exception on /edit_profile [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/broccoli/161220049_web_programming/blog/app/routes.py", line 136, in edit_profile
-    return redirect(url_for('user'), username = current_user.username)
-  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'user'. Did you forget to specify values ['username']?
-2018-02-22 15:20:22,180 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:23:43,405 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:25:09,165 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:26:07,735 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:26:54,690 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:28:49,548 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:31:42,100 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:37:36,006 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:43:15,653 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:45:37,019 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:46:46,223 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:48:15,190 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:53:59,604 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:56:38,040 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 15:58:00,111 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:00:53,646 INFO: Blog startup [in app/__init__.py:44]
-2018-02-22 16:02:57,716 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:12:49,850 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:31:20,837 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:37:24,986 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:46:17,977 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 16:52:56,582 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 17:20:57,287 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
-2018-02-22 17:22:59,140 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+  File "/home/broccoli/161220049_web_programming/blog/app/templates/_post.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/broccoli/161220049_web_programming/blog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/usr/local/lib/python2.7/dist-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/usr/local/lib/python2.7/dist-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/usr/local/lib/python2.7/dist-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/usr/local/lib/python2.7/dist-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/broccoli/161220049_web_programming/blog/app/templates/base.html", line 49, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/broccoli/161220049_web_programming/blog/app/templates/_post.html", line 12, in block "app_content"
+    {% include 'comment.html' %}
+  File "/home/broccoli/161220049_web_programming/blog/app/templates/comment.html", line 5, in top-level template code
+    <img src="{{ comment.author.avatar(70) }}" />
+TypeError: 'unicode' object is not callable
+2018-02-22 17:48:47,680 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 17:52:05,907 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 17:57:35,316 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 18:07:44,424 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 18:08:49,503 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
