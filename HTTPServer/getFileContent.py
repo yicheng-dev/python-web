@@ -66,9 +66,15 @@ def responseRequest(getRequestPath, msgSendtoClient):
 			if ".doc" in rootPath:
 				msgSendtoClient = setParaAndContext(msgSendtoClient,"application/msword",rootPath,"rb")
 			if ".jpg" in rootPath:
-				msgSendtoClient = setParaAndContext(msgSendtoClient,"image/jpg",rootPath,"rb")
+				msgSendtoClient = setParaAndContext(msgSendtoClient,"image/jpg",rootPath,"r")
 			if ".png" in rootPath:
 				msgSendtoClient = setParaAndContext(msgSendtoClient,"image/png",rootPath,"rb")
 			if ".mp4" in rootPath:
 				msgSendtoClient = setParaAndContext(msgSendtoClient,"video/mpeg4",rootPath,"rb")
+			if ".json" in rootPath:
+				msgSendtoClient = setParaAndContext(msgSendtoClient,"application/json",rootPath,"rb")
+			if ".ico" in rootPath:
+				msgSendtoClient = setParaAndContext(msgSendtoClient,"image/ico",rootPath,"rb")
+			else:
+				msgSendtoClient = setParaAndContext(msgSendtoClient,"text/plain",rootPath,"r")
 	return msgSendtoClient

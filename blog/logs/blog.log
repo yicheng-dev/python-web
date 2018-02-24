@@ -52,3 +52,6 @@ TypeError: 'unicode' object is not callable
 2018-02-22 19:17:05,222 INFO: Blog startup [in app/__init__.py:44]
 2018-02-22 19:21:10,875 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
 2018-02-22 19:25:37,542 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 20:04:24,467 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 20:14:20,717 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
+2018-02-22 20:17:34,915 INFO: Blog startup [in /home/broccoli/161220049_web_programming/blog/app/__init__.py:44]
